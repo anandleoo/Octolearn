@@ -1,0 +1,211 @@
+{
+  "course": {
+    "id": "jpn-a1",
+    "title": "Япон хэл — Анхан шат",
+    "subtitle": "Мэндчилгээ, хирагана, тоо",
+    "description": "Япон хэлний үндсэн мэндчилгээ, эхний хирагана үсэг, тоо тоолохыг сурна.",
+    "icon": "languages"
+  },
+  "rewards": {
+    "lessonXp": 10,
+    "quizXp": 20
+  },
+  "units": [
+    {
+      "id": "j1-u1",
+      "title": "Бүлэг 1: Мэндчилгээ",
+      "subtitle": "Сайн байна уу, баярлалаа",
+      "lessons": [
+        {
+          "id": "j1-u1-l1",
+          "title": "Мэндчилгээ",
+          "description": "こんにちは (Конничива) гэж өдрийн мэндчилгээ хэлж сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "j1-u1-l2",
+          "title": "Өглөө, орой",
+          "description": "おはよう (Охаё), こんばんは (Конбанва) мэндчилгээг ялгана.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "j1-u1-l3",
+          "title": "Баярлалаа",
+          "description": "ありがとう (Аригато), すみません (Сүмимасэн) хэлж сурна.",
+          "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "j1-u1-l4",
+          "title": "Өөрийгөө танилцуулах",
+          "description": "わたしは…です (Ватаси ва … дэс) хэлбэрээр нэрээ хэлнэ.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "j1-u1-l5",
+          "title": "Баяртай",
+          "description": "さようなら (Саёнара), またね (Мата нэ) зэрэг салах ёсыг сурна.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-10s.mp4",
+          "durationSec": 10
+        }
+      ],
+      "quiz": {
+        "id": "j1-u1-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "こんにちは гэж юу гэсэн үг вэ?",
+            "options": [
+              "Сайн байна уу",
+              "Баярлалаа",
+              "Баяртай"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q2",
+            "text": "ありがとう гэж юу гэсэн үг вэ?",
+            "options": [
+              "Уучлаарай",
+              "Баярлалаа",
+              "Сайн уу"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q3",
+            "text": "おはよう хэзээ хэлдэг вэ?",
+            "options": [
+              "Өглөө",
+              "Орой",
+              "Шөнө"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q4",
+            "text": "Өөрийгөө танилцуулахад аль нь тохирох вэ?",
+            "options": [
+              "わたしは…です",
+              "さようなら",
+              "ありがとう"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q5",
+            "text": "さようなら гэж юу гэсэн үг вэ?",
+            "options": [
+              "Баяртай",
+              "Сайн байна уу",
+              "Өглөөний мэнд"
+            ],
+            "answerIndex": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "j1-u2",
+      "title": "Бүлэг 2: Хирагана ба тоо",
+      "subtitle": "あ、い、う、え、お ба нэгээс арав",
+      "lessons": [
+        {
+          "id": "j1-u2-l1",
+          "title": "Хирагана: あ い う え お",
+          "description": "Таван эгшгийн үсэг: а, и, у, э, о.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "j1-u2-l2",
+          "title": "Хирагана: か き く け こ",
+          "description": "К мөрийн үсгүүд: ка, ки, ку, кэ, ко.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-10s.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "j1-u2-l3",
+          "title": "Тоо: 1–5",
+          "description": "いち、に、さん、し、ご хүртэл тоолж сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "j1-u2-l4",
+          "title": "Тоо: 6–10",
+          "description": "ろく、しち、はち、きゅう、じゅう хүртэл тоолно.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "j1-u2-l5",
+          "title": "Өдөр тутмын үгс",
+          "description": "みず (ус), ごはん (хоол) зэрэг энгийн үгсийг сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        }
+      ],
+      "quiz": {
+        "id": "j1-u2-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "あ үсгийг хэрхэн уншдаг вэ?",
+            "options": [
+              "а",
+              "и",
+              "у"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q2",
+            "text": "さん гэж ямар тоо вэ?",
+            "options": [
+              "1",
+              "3",
+              "5"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q3",
+            "text": "ご гэж ямар тоо вэ?",
+            "options": [
+              "5",
+              "6",
+              "4"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q4",
+            "text": "みず гэж юу вэ?",
+            "options": [
+              "Ус",
+              "Хоол",
+              "Цай"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q5",
+            "text": "か үсэг ямар дуудлагатай вэ?",
+            "options": [
+              "ка",
+              "са",
+              "та"
+            ],
+            "answerIndex": 0
+          }
+        ]
+      }
+    }
+  ]
+}

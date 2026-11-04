@@ -1,0 +1,211 @@
+{
+  "course": {
+    "id": "eng-a2",
+    "title": "Англи хэл — Дунд шат",
+    "subtitle": "Өдөр тутмын яриа, цаг хугацаа, аялал",
+    "description": "Ресторан, дэлгүүр, аяллын нөхцөлд чөлөөтэй харилцаж сурна.",
+    "icon": "book"
+  },
+  "rewards": {
+    "lessonXp": 10,
+    "quizXp": 20
+  },
+  "units": [
+    {
+      "id": "e2-u1",
+      "title": "Бүлэг 1: Өдөр тутмын яриа",
+      "subtitle": "Хоол, дэлгүүр, асуулт",
+      "lessons": [
+        {
+          "id": "e2-u1-l1",
+          "title": "Хоолны захиалга",
+          "description": "Ресторанд \"I would like…\" хэллэгээр хоол захиалж сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "e2-u1-l2",
+          "title": "Дэлгүүрт",
+          "description": "\"How much is it?\" гэж үнэ асууж, худалдан авалт хийнэ.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "e2-u1-l3",
+          "title": "Асуулт асуух",
+          "description": "What, Where, When, Why, Who асуух үгсийг ялгана.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "e2-u1-l4",
+          "title": "Одоогийн үргэлжилсэн цаг",
+          "description": "I am reading, She is cooking гэх мэт яг одоо болж буй үйлдлийг хэлнэ.",
+          "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "e2-u1-l5",
+          "title": "Зам асуух",
+          "description": "Turn left, Go straight зэрэг чиглэлийн үгсийг сурна.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        }
+      ],
+      "quiz": {
+        "id": "e2-u1-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "\"How much is it?\" гэж юу асуудаг вэ?",
+            "options": [
+              "Хаана байгаа вэ?",
+              "Хэд вэ? (үнэ)",
+              "Хэзээ вэ?"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q2",
+            "text": "Ресторанд хоол захиалахад аль нь тохиромжтой вэ?",
+            "options": [
+              "I would like a soup, please.",
+              "I am soup.",
+              "Soup go me."
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q3",
+            "text": "\"Where\" гэдэг асуух үг юу гэсэн үг вэ?",
+            "options": [
+              "Хэзээ",
+              "Хаана",
+              "Яагаад"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q4",
+            "text": "\"She is cooking\" өгүүлбэр ямар утгатай вэ?",
+            "options": [
+              "Тэр хоол хийсэн",
+              "Тэр хоол хийх болно",
+              "Тэр яг одоо хоол хийж байна"
+            ],
+            "answerIndex": 2
+          },
+          {
+            "id": "q5",
+            "text": "\"Turn left\" гэж юу гэсэн үг вэ?",
+            "options": [
+              "Баруун тийш эргэ",
+              "Зүүн тийш эргэ",
+              "Шулуун яв"
+            ],
+            "answerIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "e2-u2",
+      "title": "Бүлэг 2: Цаг хугацаа ба аялал",
+      "subtitle": "Цаг, гараг, нислэг",
+      "lessons": [
+        {
+          "id": "e2-u2-l1",
+          "title": "Цаг хэлэх",
+          "description": "\"What time is it?\" асуултад хариулж цаг хэлнэ.",
+          "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "e2-u2-l2",
+          "title": "Долоо хоногийн гарагууд",
+          "description": "Monday-аас Sunday хүртэлх гарагуудыг цээжилнэ.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "e2-u2-l3",
+          "title": "Өнгөрсөн цаг",
+          "description": "I visited, We played гэх мэт үйл үгийн өнгөрсөн цагийг сурна.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-10s.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "e2-u2-l4",
+          "title": "Нисэх онгоцны буудалд",
+          "description": "Ticket, passport, gate зэрэг аяллын үгсийг сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "e2-u2-l5",
+          "title": "Зочид буудалд",
+          "description": "Өрөө захиалах, check-in хийх үгсийг сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        }
+      ],
+      "quiz": {
+        "id": "e2-u2-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "\"It is half past three\" гэж хэдэн цаг вэ?",
+            "options": [
+              "3:30",
+              "3:15",
+              "2:30"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q2",
+            "text": "\"Wednesday\" аль гараг вэ?",
+            "options": [
+              "Лхагва",
+              "Пүрэв",
+              "Баасан"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q3",
+            "text": "\"I visited\" ямар цагт байна вэ?",
+            "options": [
+              "Одоо",
+              "Өнгөрсөн",
+              "Ирээдүй"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q4",
+            "text": "\"Passport\" гэж юу вэ?",
+            "options": [
+              "Нислэгийн тасалбар",
+              "Гадаад паспорт",
+              "Тээш"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q5",
+            "text": "Зочид буудалд ирээд юу хийдэг вэ?",
+            "options": [
+              "Check-in хийнэ",
+              "Check-out хийнэ",
+              "Take-off хийнэ"
+            ],
+            "answerIndex": 0
+          }
+        ]
+      }
+    }
+  ]
+}

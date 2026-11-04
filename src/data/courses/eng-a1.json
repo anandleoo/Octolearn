@@ -1,0 +1,309 @@
+{
+  "course": {
+    "id": "eng-a1",
+    "title": "Англи хэл — Анхан шат",
+    "subtitle": "Мэндчилгээ, тоо, өдөр тутмын хэллэг",
+    "description": "Англи хэлний үндсэн мэндчилгээ, тоо, ахуйн хэллэгийг эхнээс нь сурна.",
+    "icon": "brand"
+  },
+  "rewards": {
+    "lessonXp": 10,
+    "quizXp": 20
+  },
+  "units": [
+    {
+      "id": "u1",
+      "title": "Бүлэг 1: Танилцах",
+      "subtitle": "Мэндчилгээ, нэр, тоо",
+      "lessons": [
+        {
+          "id": "u1-l1",
+          "title": "Мэндчилгээ",
+          "description": "Hello, Hi, Good morning гэх мэт өдөр тутмын мэндчилгээний үгсийг сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u1-l2",
+          "title": "Өөрийгөө танилцуулах",
+          "description": "\"My name is…\" өгүүлбэрээр өөрийн нэрээ хэлж сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u1-l3",
+          "title": "Та хаанаас ирсэн бэ?",
+          "description": "\"Where are you from?\" асуулт болон хариултыг дадлагажуулна.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u1-l4",
+          "title": "Тоо тоолох",
+          "description": "One-аас Ten хүртэлх тоог унших, хэлэх.",
+          "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "u1-l5",
+          "title": "Талархал, уучлалт",
+          "description": "Thank you, Please, Sorry зэрэг эелдэг үгсийг хэрхэн хэрэглэх вэ.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        }
+      ],
+      "quiz": {
+        "id": "u1-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "\"Hello\" гэдэг ямар утгатай вэ?",
+            "options": [
+              "Баяртай",
+              "Сайн байна уу",
+              "Баярлалаа"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q2",
+            "text": "\"My name is Bold\" гэж юу гэсэн үг вэ?",
+            "options": [
+              "Намайг Болд гэдэг",
+              "Би Болдыг таньдаг",
+              "Болд миний найз"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q3",
+            "text": "\"Thank you\" гэдэг ямар утгатай вэ?",
+            "options": [
+              "Баярлалаа",
+              "Уучлаарай",
+              "Баяртай"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q4",
+            "text": "\"Three\" гэдэг аль тоо вэ?",
+            "options": [
+              "2",
+              "3",
+              "5"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q5",
+            "text": "\"Where are you from?\" гэж асуувал юу гэсэн үг вэ?",
+            "options": [
+              "Чи хаашаа явж байна вэ?",
+              "Чи хэдэн настай вэ?",
+              "Чи хаанаас ирсэн бэ?"
+            ],
+            "answerIndex": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "u2",
+      "title": "Бүлэг 2: Өдөр тутмын яриа",
+      "subtitle": "Гэр бүл, өнгө, цаг, хоол",
+      "lessons": [
+        {
+          "id": "u2-l1",
+          "title": "Өглөөний хэвшил",
+          "description": "Wake up, brush teeth, have breakfast гэх мэт өглөөний үйлдлүүд.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-10s.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u2-l2",
+          "title": "Гэр бүл",
+          "description": "Mother, father, sister, brother — гэр бүлийн гишүүдийн нэр.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u2-l3",
+          "title": "Өнгө",
+          "description": "Red, blue, green… үндсэн өнгөнүүдийн нэр.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u2-l4",
+          "title": "Гараг, цаг",
+          "description": "Monday-аас Sunday хүртэл, мөн цагийг англиар хэлэх.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u2-l5",
+          "title": "Хоол хүнс",
+          "description": "Bread, rice, meat, water — өдөр тутмын хоолны нэршил.",
+          "videoUrl": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "durationSec": 5
+        }
+      ],
+      "quiz": {
+        "id": "u2-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "\"Mother\" гэдэг хэн бэ?",
+            "options": [
+              "Аав",
+              "Ээж",
+              "Эгч"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q2",
+            "text": "\"Red\" ямар өнгө вэ?",
+            "options": [
+              "Улаан",
+              "Цэнхэр",
+              "Ногоон"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q3",
+            "text": "\"Monday\" ямар гараг вэ?",
+            "options": [
+              "Лхагва",
+              "Даваа",
+              "Баасан"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q4",
+            "text": "\"I eat breakfast\" гэж юу гэсэн үг вэ?",
+            "options": [
+              "Би оройн хоол иднэ",
+              "Би өглөөний хоол иднэ",
+              "Би хоол хийнэ"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q5",
+            "text": "\"Good night\" гэж хэзээ хэлэх вэ?",
+            "options": [
+              "Өглөө босоод",
+              "Унтахын өмнө",
+              "Өдрийн хоолны үеэр"
+            ],
+            "answerIndex": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "u3",
+      "title": "Бүлэг 3: Хот, аялал",
+      "subtitle": "Чиглэл, тээвэр, дэлгүүр",
+      "lessons": [
+        {
+          "id": "u3-l1",
+          "title": "Чиглэл асуух",
+          "description": "Turn left, turn right, go straight — замаа асууж сурна.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-5s.mp4",
+          "durationSec": 5
+        },
+        {
+          "id": "u3-l2",
+          "title": "Тээвэр",
+          "description": "Bus, train, taxi, plane — тээврийн хэрэгслүүд.",
+          "videoUrl": "https://download.samplelib.com/mp4/sample-10s.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u3-l3",
+          "title": "Дэлгүүрт",
+          "description": "\"How much is it?\" гэж үнэ асууж сурна.",
+          "videoUrl": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u3-l4",
+          "title": "Ресторанд",
+          "description": "Menu, bill, water, please — захиалга өгөх хэллэгүүд.",
+          "videoUrl": "https://test-videos.co.uk/vids/jellyfish/mp4/h264/360/Jellyfish_360_10s_1MB.mp4",
+          "durationSec": 10
+        },
+        {
+          "id": "u3-l5",
+          "title": "Цаг агаар",
+          "description": "Sunny, rainy, cold, hot — цаг агаарын тухай ярих.",
+          "videoUrl": "https://test-videos.co.uk/vids/sintel/mp4/h264/360/Sintel_360_10s_1MB.mp4",
+          "durationSec": 10
+        }
+      ],
+      "quiz": {
+        "id": "u3-quiz",
+        "passPercent": 60,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "\"Turn left\" гэдэг юу гэсэн үг вэ?",
+            "options": [
+              "Баруун эргэ",
+              "Зүүн эргэ",
+              "Шулуун яв"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q2",
+            "text": "\"Bus\" гэдэг юу вэ?",
+            "options": [
+              "Галт тэрэг",
+              "Автобус",
+              "Онгоц"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q3",
+            "text": "\"How much is it?\" гэж юуг асуудаг вэ?",
+            "options": [
+              "Үнийг",
+              "Цагийг",
+              "Замыг"
+            ],
+            "answerIndex": 0
+          },
+          {
+            "id": "q4",
+            "text": "\"The menu, please\" гэж хаана хэлэх вэ?",
+            "options": [
+              "Эмнэлэгт",
+              "Ресторанд",
+              "Номын санд"
+            ],
+            "answerIndex": 1
+          },
+          {
+            "id": "q5",
+            "text": "\"It is sunny\" гэж юу гэсэн үг вэ?",
+            "options": [
+              "Бороо орж байна",
+              "Нартай байна",
+              "Цас орж байна"
+            ],
+            "answerIndex": 1
+          }
+        ]
+      }
+    }
+  ]
+}
