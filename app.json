@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "OctoLearn",
+    "slug": "octolearn",
+    "version": "1.0.0",
+    "scheme": "octolearn",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "online.octolearn.prototype",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "online.octolearn.prototype",
+      "allowBackup": false,
+      "adaptiveIcon": {
+        "backgroundColor": "#5B4BDB",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": false,
+          "supportsPictureInPicture": false
+        }
+      ],
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#FFFFFF",
+          "dark": {
+            "backgroundColor": "#14131C"
+          }
+        }
+      ],
+      "expo-secure-store"
+    ]
+  }
+}
