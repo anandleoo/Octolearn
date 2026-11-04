@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "demo-user-0001",
+      "name": "Болд",
+      "email": "demo@octolearn.mn",
+      "salt": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+      "passwordHash": "92eeade8f037132ecd2210099ff9c11e79f13b90191ce31025b68854f97aa43f",
+      "createdAt": "2026-11-01T09:00:00.000Z"
+    }
+  ]
+}
