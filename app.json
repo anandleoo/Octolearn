@@ -18,7 +18,7 @@
       "package": "online.octolearn.prototype",
       "allowBackup": false,
       "adaptiveIcon": {
-        "backgroundColor": "#5B4BDB",
+        "backgroundColor": "#6C47E0",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -27,7 +27,15 @@
     },
     "web": {
       "bundler": "metro",
-      "favicon": "./assets/favicon.png"
+      "output": "single",
+      "favicon": "./assets/favicon.png",
+      "name": "OctoLearn",
+      "shortName": "OctoLearn",
+      "lang": "mn",
+      "description": "Видео хичээл, шалгалт, XP бүхий суралцах апп.",
+      "themeColor": "#6C47E0",
+      "backgroundColor": "#FFFFFF",
+      "display": "standalone"
     },
     "plugins": [
       "expo-router",
@@ -46,7 +54,7 @@
           "imageWidth": 160,
           "backgroundColor": "#FFFFFF",
           "dark": {
-            "backgroundColor": "#14131C"
+            "backgroundColor": "#101016"
           }
         }
       ],
