@@ -37,7 +37,7 @@
 ## Татаж авах
 
 - **Вэб хуудас:** [ooctolearn-web.vercel.app](https://ooctolearn-web.vercel.app/)
-- **Android APK (v1.0.2):** [OctoLearn.apk татах](https://github.com/anandleoo/octolearn-web/releases/latest/download/OctoLearn.apk). Татаж авсны дараа утас асуухад «Үл мэдэгдэх эх сурвалжаас суулгах» зөвшөөрлийг өгнө үү.
+- **Android APK (v1.0.1):** [OctoLearn.apk татах](https://github.com/anandleoo/octolearn-web/releases/latest/download/OctoLearn.apk). Татаж авсны дараа утас асуухад «Үл мэдэгдэх эх сурвалжаас суулгах» зөвшөөрлийг өгнө үү.
 
 ## Энэхүү төслийг ажиллагаанд оруулахын тулд эдгээр коммандуудыг ажиллуулна.
 

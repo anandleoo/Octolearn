@@ -38,7 +38,7 @@ The flow of using this app is:
 ## Download
 
 - **Website:** [ooctolearn-web.vercel.app](https://ooctolearn-web.vercel.app/)
-- **Android APK (v1.0.2):** [download OctoLearn.apk](https://github.com/anandleoo/octolearn-web/releases/latest/download/OctoLearn.apk). After downloading, allow "Install unknown apps" when your phone asks.
+- **Android APK (v1.0.1):** [download OctoLearn.apk](https://github.com/anandleoo/octolearn-web/releases/latest/download/OctoLearn.apk). After downloading, allow "Install unknown apps" when your phone asks.
 
 ## To run this project, run the following commands
 
