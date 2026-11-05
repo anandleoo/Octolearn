@@ -178,17 +178,17 @@ input форм шалгах
 
 ## Ашигласан технологи
 
-Expo SDK 58
-React Native 0.88 
-TypeScript (strict) 
-Expo Router 
-Reanimated 4 
-expo-video 
-expo-blur 
-expo-secure-store 
-expo-crypto 
-Zustand + AsyncStorage 
-react-native-svg 
-Lucide icons
-Nunito font  
-Jest.
+- Expo SDK 58
+- React Native 0.88 
+- TypeScript (strict) 
+- Expo Router 
+- Reanimated 4 
+- expo-video 
+- expo-blur 
+- expo-secure-store 
+- expo-crypto 
+- Zustand + AsyncStorage 
+- react-native-svg 
+- Lucide icons
+- Nunito font  
+- Jest.
