@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 
 import { isAllowedVideoUrl } from '@/lib/security';
+import { skipTarget } from '@/lib/videoSkip';
 
 /** Passing this many seconds between two updates means the user jumped (seeked), not watched. */
 const MAX_PLAYBACK_STEP = 1.5;
@@ -87,6 +88,12 @@ export function useLessonPlayback(videoUrl: string, autoplay = false) {
     [player],
   );
 
+  // Uses the player's live time, so quick repeated skips add up. It goes through seekTo, so skipping never counts as watching.
+  const skipBy = useCallback(
+    (delta: number) => seekTo(skipTarget(player.currentTime, player.duration, delta)),
+    [player, seekTo],
+  );
+
   const retry = useCallback(() => {
     if (!safeUrl) return;
     watched.current.clear();
@@ -111,6 +118,7 @@ export function useLessonPlayback(videoUrl: string, autoplay = false) {
     canFinish: watchedRatio >= WATCH_THRESHOLD,
     toggle,
     seekTo,
+    skipBy,
     retry,
     pause: () => player.pause(),
   };

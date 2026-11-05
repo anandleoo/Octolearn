@@ -14,6 +14,7 @@ import { Screen } from '@/components/ui/Screen';
 import { ScreenHeader } from '@/components/ui/ScreenHeader';
 import { useExit } from '@/hooks/useExit';
 import { haptic } from '@/lib/haptics';
+import { sanitizeSkip, SKIP_OPTIONS } from '@/lib/videoSkip';
 import { useAuthStore } from '@/store/authStore';
 import { confirmDialog } from '@/store/confirmStore';
 import { useProgress, useProgressStore } from '@/store/progressStore';
@@ -23,13 +24,20 @@ import { spacing, useTheme } from '@/theme';
 
 const SCREEN = 'settings';
 const DEMO_FAILING_VIDEO = 'fail=1';
-type SheetName = 'password' | 'delete' | 'appearance' | null;
+type SheetName = 'password' | 'delete' | 'appearance' | 'skip' | null;
 
 const APPEARANCE_OPTIONS: Option<AppearanceMode>[] = [
   { value: 'system', label: 'Системийн', description: 'Утасныхаа тохиргоог дагана', icon: 'phone' },
   { value: 'light', label: 'Цайвар', description: 'Үргэлж цайвар дэвсгэртэй', icon: 'light' },
   { value: 'dark', label: 'Харанхуй', description: 'Шөнийн тохиромжтой, нүдэнд амар', icon: 'dark' },
 ];
+
+const SKIP_SHEET_OPTIONS: Option<string>[] = SKIP_OPTIONS.map((s) => ({
+  value: String(s),
+  label: `${s} секунд`,
+  description: `Хоёр удаа товшиход ${s} секунд гүйлгэнэ`,
+  icon: 'forward',
+}));
 
 /** Settings: account details, app preferences, and the (collapsible) danger zone: reset progress, delete account. */
 export default function SettingsScreen() {
@@ -39,7 +47,7 @@ export default function SettingsScreen() {
   const user = useAuthStore((s) => s.user);
   const signOut = useAuthStore((s) => s.signOut);
   const resetProgress = useProgressStore((s) => s.reset);
-  const { appearance, haptics, setAppearance, setHaptics } = useSettingsStore();
+  const { appearance, haptics, skipSeconds, setAppearance, setHaptics, setSkipSeconds } = useSettingsStore();
   const course = useProgress().course;
   const [sheet, setSheet] = useState<SheetName>(null);
   if (!user) return null;
@@ -87,6 +95,12 @@ export default function SettingsScreen() {
         <Reveal once={SCREEN} index={1}>
           <SettingsGroup title="ТОХИРГОО">
             <SettingsRow icon="appearance" label="Харагдах байдал" value={appearanceLabel} onPress={() => setSheet('appearance')} />
+            <SettingsRow
+              icon="forward"
+              label="Видео гүйлгэх хугацаа"
+              value={`${skipSeconds} секунд`}
+              onPress={() => setSheet('skip')}
+            />
             <SettingsRow
               icon="vibrate"
               label="Чичиргээн хариу"
@@ -157,6 +171,14 @@ export default function SettingsScreen() {
         options={APPEARANCE_OPTIONS}
         value={appearance}
         onSelect={setAppearance}
+        onClose={() => setSheet(null)}
+      />
+      <OptionSheet
+        visible={sheet === 'skip'}
+        title="Видео гүйлгэх хугацаа"
+        options={SKIP_SHEET_OPTIONS}
+        value={String(skipSeconds)}
+        onSelect={(v) => setSkipSeconds(sanitizeSkip(Number(v)))}
         onClose={() => setSheet(null)}
       />
       <ChangePasswordSheet visible={sheet === 'password'} onClose={() => setSheet(null)} />

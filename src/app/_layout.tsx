@@ -61,7 +61,7 @@ export default function RootLayout() {
   const app = (
     <>
       <StatusBar style={isDark ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
+      <Stack screenOptions={{ headerShown: false, orientation: 'portrait', contentStyle: { backgroundColor: colors.bg } }}>
         {/* Protected routes: while `guard` is false the router refuses to open them, even from a deep link.
               `redirectTo` is set on purpose: the (auth) group has no address of its own, so without it a signed-out
               launch ("/" belongs to the protected tabs) ended on "page not found" in release builds. */}

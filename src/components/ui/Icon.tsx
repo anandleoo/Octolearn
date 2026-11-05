@@ -21,11 +21,13 @@ import LogOut from 'lucide-react-native/icons/log-out';
 import Mail from 'lucide-react-native/icons/mail';
 import Maximize from 'lucide-react-native/icons/maximize';
 import Medal from 'lucide-react-native/icons/medal';
+import Minimize from 'lucide-react-native/icons/minimize';
 import Moon from 'lucide-react-native/icons/moon';
 import Pause from 'lucide-react-native/icons/pause';
 import Pencil from 'lucide-react-native/icons/pencil';
 import Play from 'lucide-react-native/icons/play';
 import RotateCcw from 'lucide-react-native/icons/rotate-ccw';
+import RotateCw from 'lucide-react-native/icons/rotate-cw';
 import Search from 'lucide-react-native/icons/search';
 import Settings from 'lucide-react-native/icons/settings';
 import Smartphone from 'lucide-react-native/icons/smartphone';
@@ -58,6 +60,8 @@ const ICONS = {
   refresh: RotateCcw,
   alert: CircleX,
   expand: Maximize,
+  shrink: Minimize,
+  forward: RotateCw,
   edit: Pencil,
   clock: Clock,
   offline: WifiOff,

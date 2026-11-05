@@ -1,6 +1,7 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { BackHandler, ScrollView, StyleSheet, View } from 'react-native';
 
 import { useExit } from '@/hooks/useExit';
 import { useLessonPlayback, WATCH_THRESHOLD } from '@/hooks/useLessonPlayback';
@@ -38,10 +39,39 @@ export function LessonScreen({ step, state }: { step: Step; state: NodeState }) 
   );
   const [reward, setReward] = useState<number | null>(null);
   const online = useOnline();
+  const [fullscreen, setFullscreen] = useState(false);
+  const { failed, player, retry, seekTo } = playback;
+
+  // Switching layouts rebuilds the video view, and some platforms lose their place when that happens.
+  // So the position and play state are noted before the switch and put back after it.
+  const resume = useRef<{ time: number; playing: boolean } | null>(null);
+  const switchFullscreen = useCallback(
+    (next: boolean) => {
+      resume.current = { time: player.currentTime, playing: player.playing };
+      setFullscreen(next);
+    },
+    [player],
+  );
+  useEffect(() => {
+    const saved = resume.current;
+    if (!saved) return;
+    resume.current = null;
+    if (Math.abs(player.currentTime - saved.time) > 0.5) seekTo(saved.time);
+    if (saved.playing && !player.playing) player.play();
+  }, [fullscreen, player, seekTo]);
+
+  // On Android the back button leaves fullscreen first, instead of leaving the lesson.
+  useEffect(() => {
+    if (!fullscreen) return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      switchFullscreen(false);
+      return true;
+    });
+    return () => sub.remove();
+  }, [fullscreen, switchFullscreen]);
 
   // When the connection comes back and the video had failed, try it again without making the learner tap.
   const wasOnline = useRef(online);
-  const { failed, retry } = playback;
   useEffect(() => {
     if (online && !wasOnline.current && failed) retry();
     wasOnline.current = online;
@@ -101,10 +131,30 @@ export function LessonScreen({ step, state }: { step: Step; state: NodeState }) 
     );
   }
 
+  // Fullscreen is our own layout rather than the native player's, so the controls and double tap work there too.
+  // It only lasts while there is a video to show.
+  const showFullscreen = fullscreen && !offline && !playback.failed;
+  const orientation = (
+    <Stack.Screen
+      options={{ orientation: showFullscreen ? 'landscape' : 'portrait', gestureEnabled: !showFullscreen }}
+    />
+  );
+
+  if (showFullscreen) {
+    return (
+      <View style={styles.fullscreen}>
+        {orientation}
+        <StatusBar hidden />
+        <VideoPlayer playback={playback} fullscreen onToggleFullscreen={() => switchFullscreen(false)} />
+      </View>
+    );
+  }
+
   const percentWatched = Math.round(playback.watchedRatio * 100);
 
   return (
     <Screen edges={['top', 'bottom']}>
+      {orientation}
       <ScreenHeader title={`Бүлэг ${step.unitIndex + 1} · Хичээл ${step.indexInUnit + 1} / ${total}`} onBack={exit} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Reveal>
@@ -113,7 +163,7 @@ export function LessonScreen({ step, state }: { step: Step; state: NodeState }) 
           ) : playback.failed ? (
             <VideoErrorCard onRetry={retryVideo} />
           ) : (
-            <VideoPlayer playback={playback} />
+            <VideoPlayer playback={playback} onToggleFullscreen={() => switchFullscreen(true)} />
           )}
         </Reveal>
         <Reveal index={1} style={styles.block}>
@@ -165,6 +215,7 @@ export function LessonScreen({ step, state }: { step: Step; state: NodeState }) 
 }
 
 const styles = StyleSheet.create({
+  fullscreen: { flex: 1, backgroundColor: '#000000' },
   content: { paddingHorizontal: 20, paddingTop: spacing.sm, paddingBottom: 24, gap: 16 },
   block: { gap: 12 },
   tiles: { flexDirection: 'row', gap: 10 },
