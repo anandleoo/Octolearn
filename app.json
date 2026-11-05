@@ -2,9 +2,9 @@
   "expo": {
     "name": "OctoLearn",
     "slug": "octolearn",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "scheme": "octolearn",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
@@ -23,7 +23,8 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "versionCode": 3
     },
     "web": {
       "bundler": "metro",
