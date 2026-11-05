@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Svg, { Circle, Ellipse, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import { useTheme } from '@/theme';
 
@@ -110,6 +110,40 @@ export function LockedIllustration({ width = 220 }: { width?: number }) {
           <Rect x={74} y={76} width={72} height={58} rx={11} fill={c.accent} stroke={c.text} strokeWidth={2.5} />
           <Circle cx={110} cy={100} r={7} fill="#FFFFFF" />
           <Rect x={107.5} y={104} width={5} height={14} rx={2.5} fill="#FFFFFF" />
+        </>
+      )}
+    </Scene>
+  );
+}
+
+/** A cloud with a crossed-out Wi-Fi signal: there is no internet connection. */
+export function OfflineIllustration({ width = 220 }: { width?: number }) {
+  return (
+    <Scene width={width}>
+      {(c) => (
+        <>
+          <G translateY={20}>
+            <Path
+              d="M62 120 C36 120 28 92 50 82 C46 58 78 48 93 64 C102 38 142 40 149 67 C176 63 190 96 166 110 C161 118 153 120 147 120 Z"
+              fill={c.surface}
+              stroke={c.text}
+              strokeWidth={2.5}
+              strokeLinejoin="round"
+            />
+            <Path
+              d="M102.9 100.9 A10 10 0 0 1 117.1 100.9 M95.9 93.9 A20 20 0 0 1 124.1 93.9 M88.8 86.8 A30 30 0 0 1 131.2 86.8"
+              fill="none"
+              stroke={c.lockedIcon}
+              strokeWidth={4}
+              strokeLinecap="round"
+            />
+            <Circle cx={110} cy={108} r={3} fill={c.lockedIcon} />
+            <Path d="M66 46 L154 130" stroke={c.bg} strokeWidth={13} strokeLinecap="round" />
+            <Path d="M66 46 L154 130" stroke={c.danger} strokeWidth={5} strokeLinecap="round" />
+          </G>
+          <Circle cx={34} cy={140} r={2.5} fill={c.lockedIcon} />
+          <Circle cx={186} cy={136} r={2.5} fill={c.lockedIcon} />
+          <Circle cx={170} cy={48} r={2.5} fill={c.lockedIcon} />
         </>
       )}
     </Scene>

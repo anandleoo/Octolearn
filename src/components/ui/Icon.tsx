@@ -35,6 +35,7 @@ import Trash from 'lucide-react-native/icons/trash';
 import Trophy from 'lucide-react-native/icons/trophy';
 import User from 'lucide-react-native/icons/user';
 import Vibrate from 'lucide-react-native/icons/vibrate';
+import WifiOff from 'lucide-react-native/icons/wifi-off';
 import X from 'lucide-react-native/icons/x';
 
 /** Every icon the app uses, by a short role-based name. Swapping an icon means changing one line here. */
@@ -59,6 +60,7 @@ const ICONS = {
   expand: Maximize,
   edit: Pencil,
   clock: Clock,
+  offline: WifiOff,
   brand: GraduationCap,
   calendar: Calendar,
   down: ChevronDown,

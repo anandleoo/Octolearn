@@ -122,6 +122,7 @@ export default function SettingsScreen() {
               }}
             />
             <SettingsRow icon="alert" label="Хуудас ачаалагдахгүй" description="Алдааны хуудсын жишээ (апп эвдрэхгүй)" onPress={() => router.push('/demo-error')} />
+            <SettingsRow icon="offline" label="Интернэтгүй байдал" description="Интернэт тасарсан үеийн хуудас" onPress={() => router.push('/demo-offline')} />
             <SettingsRow icon="search" label="Хуудас олдсонгүй" description="Байхгүй хаяг руу орсон үед" onPress={() => router.push('/demo/missing-page')} />
             <SettingsRow icon="clock" label="Ачаалж буй төлөв" description="Skeleton: Нүүр, Хичээл, Профайл" onPress={() => router.push('/demo-loading')} />
           </SettingsGroup>
