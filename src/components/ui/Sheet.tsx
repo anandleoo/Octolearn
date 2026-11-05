@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { KeyboardAvoidingView, Modal, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, Modal, ScrollView, StyleSheet, View } from 'react-native';
 import Animated, { SlideInDown } from 'react-native-reanimated';
 
 import { radius, useTheme } from '@/theme';
@@ -20,7 +20,7 @@ export function Sheet({ visible, title, onClose, children }: SheetProps) {
   const { colors } = useTheme();
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose} statusBarTranslucent>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.fill}>
+      <KeyboardAvoidingView behavior="padding" style={styles.fill}>
         <BlurBackdrop onPress={onClose} />
         <Animated.View
           entering={SlideInDown.duration(260)}
