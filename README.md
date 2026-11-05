@@ -15,27 +15,36 @@ The flow of using this app is:
 
 ## Screenshots
 
-<!-- These are grey placeholders. Replace each file in docs/screenshots/ with a real screenshot of the same name. -->
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/01-home.png" width="170" alt="Home: learning path"><br><sub>Home · learning path</sub></td>
-    <td align="center"><img src="docs/screenshots/02-lesson.png" width="170" alt="Lesson"><br><sub>Lesson · video</sub></td>
-    <td align="center"><img src="docs/screenshots/03-quiz.png" width="170" alt="Quiz"><br><sub>Quiz</sub></td>
+    <td align="center"><img src="docs/screenshots/sign-in.jpg" width="200" alt="Sign in"><br><sub>Sign in</sub></td>
+    <td align="center"><img src="docs/screenshots/no-course.jpg" width="200" alt="No course chosen"><br><sub>No course chosen</sub></td>
+    <td align="center"><img src="docs/screenshots/choose-course.jpg" width="200" alt="Choose a course"><br><sub>Choose a course</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/04-courses.png" width="170" alt="Courses"><br><sub>Courses</sub></td>
-    <td align="center"><img src="docs/screenshots/05-profile.png" width="170" alt="Profile"><br><sub>Profile</sub></td>
-    <td align="center"><img src="docs/screenshots/06-settings.png" width="170" alt="Settings"><br><sub>Settings</sub></td>
+    <td align="center"><img src="docs/screenshots/course.jpg" width="200" alt="Courses · course progress"><br><sub>Courses · course progress</sub></td>
+    <td align="center"><img src="docs/screenshots/lesson-done.jpg" width="200" alt="Lesson finished"><br><sub>Lesson finished</sub></td>
+    <td align="center"><img src="docs/screenshots/quiz.jpg" width="200" alt="Quiz"><br><sub>Quiz</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/quiz-wrong.jpg" width="200" alt="Wrong answer"><br><sub>Wrong answer</sub></td>
+    <td align="center"><img src="docs/screenshots/quiz-correct.jpg" width="200" alt="Correct answer"><br><sub>Correct answer</sub></td>
+    <td align="center"><img src="docs/screenshots/quiz-failed.jpg" width="200" alt="Quiz result"><br><sub>Quiz result</sub></td>
   </tr>
 </table>
 
 
 
+## Download
+
+- **Website:** [ooctolearn-web.vercel.app](https://ooctolearn-web.vercel.app/)
+- **Android APK (v1.0.2):** [download OctoLearn.apk](https://github.com/anandleoo/octolearn-web/releases/latest/download/OctoLearn.apk). After downloading, allow "Install unknown apps" when your phone asks.
+
 ## To run this project, run the following commands
 
 ```bash
-git clone https://github.com/anandleoo/octolearn/
-cd octolearn
+git clone https://github.com/anandleoo/Octolearn.git
+cd Octolearn
 npm install
 npx expo start
 ```
@@ -52,10 +61,12 @@ Expo SDK 58 requires Node 22.13 or newer (although it also worked on Node 20, wi
 
 - **Accounts:** a sign in / sign up page with a **"Remember me"** option. User data is stored in a small **JSON "database"** on the device (`src/db/userDb.ts`, initial data in `src/data/users.json`). The prototype needs no backend.
 - **Courses tab:** switch between courses with a dropdown (or choose *no course*), a donut progress ring, search, a collapsible course outline, and the other courses. While no course is chosen, the Home page shows a "choose a course" page.
+- **Search:** on the Courses page you can search by lesson name, description and unit name. Searching "шалгалт" finds the quizzes. Matching units open automatically and the number of results is shown. If nothing matches, a "Clear search" button appears.
 - **Profile + Edit profile + Settings:** badges, change name / email / bio, change password, light / dark / system theme, vibration feedback on/off, sign out, and a collapsible **danger zone** (reset progress, delete account; deleting asks for the password).
 - **After a lesson:** the *Next lesson* button opens the next lesson and starts its video right away. The *Back to Home* button takes you to the Home page.
 - **Error and loading states:** for *video failed to load*, *page failed to load*, *page not found* and *locked step* there is a hand-drawn illustration for each, plus skeleton (empty placeholder while loading) screens for Home, Courses, Profile and the video.
 - **No-internet page:** when the internet drops, an illustrated "No internet connection" page replaces the video in a lesson, and its "Check again" button checks the connection again. As soon as the connection returns, the video reloads by itself. (You can view it directly under Settings → DEMO.)
+- **Video player:** the on-screen controls work in fullscreen too. Double-tap the right or left side of the video to skip forward or back. The skip length (5, 10, 15 or 30 seconds) is chosen in Settings. Skipped parts do not count as watched.
 
   (The assignment suggests videos of 30 seconds to 2 minutes, so if you like, replace the links in `src/data/courses/*.json`. The allowed hosts are listed in `src/lib/security.ts`.)
 
@@ -117,8 +128,7 @@ src/
   - Sign-in: use short-lived access tokens + refresh tokens, limit too many attempts on the server (rate limit), and add email verification and two-factor authentication (2FA).
   - Encrypting content and user data (encryption at rest): store the user account and the progress information of *which courses and lessons were taken* encrypted on the device with AES-256-GCM (with the key in the Keychain / Keystore), and encrypt them in the server database too. All transmission goes over HTTPS (TLS).
   - Check answers on the server: keep the correct quiz answers and the scoring on the server instead of inside the app. 
-- Offline mode: if there is time, I would build an offline mode where users can download a course in advance (storing the videos and quizzes on the device) and study even without internet. When the internet returns, progress is synced with the server. Today, when the internet drops, the app shows an illustrated "No internet connection" page with a "Check again" button.
-- A fully working web version, publishing to the App Store / Google Play, and shuffling the quiz options (shuffle).
+- Offline mode: if there is time, I would build an offline mode where users can download the lessons they choose in advance (storing the videos and quizzes on the device) and study even without internet. When the internet returns, progress is synced with the server. Today, when the internet drops, the app shows an illustrated "No internet connection" page with a "Check again" button.
 
 ## AI usage
 
@@ -142,6 +152,7 @@ form input validation:
 - expo-blur
 - expo-secure-store
 - expo-crypto
+- expo-network
 - Zustand + AsyncStorage
 - react-native-svg
 - Lucide icons
