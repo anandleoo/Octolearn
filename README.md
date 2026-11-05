@@ -29,7 +29,7 @@ The flow of using this app is:
   </tr>
 </table>
 
-Demo video: _TODO: add the link here._
+
 
 ## To run this project, run the following commands
 
@@ -75,61 +75,11 @@ Expo SDK 58 requires Node 22.13 or newer (although it also worked on Node 20, wi
 
 **Flow between pages**
 
-```mermaid
-flowchart TD
-  Open([Open app]) --> Signed{Signed in?}
-  Signed -- "no" --> Auth["Sign in / Sign up"]
-  Auth --> Signed
-  Signed -- "yes" --> Tabs
-
-  subgraph Tabs ["Bottom navigation"]
-    Home["Home: learning path"]
-    Courses["Courses"]
-    Profile["Profile"]
-  end
-
-  Home --> Lesson["Lesson: video"]
-  Courses --> Lesson
-  Home --> Quiz["Quiz"]
-  Courses --> Quiz
-  Lesson -- "Next lesson" --> Lesson
-  Lesson -- "5th lesson" --> Quiz
-  Lesson -- "Back to Home" --> Home
-  Quiz --> Result["Result: passed or retry"]
-  Profile --> Settings["Settings"]
-  Profile --> Edit["Edit profile"]
-  Settings --> Edit
-  Settings --> Auth
-```
+![Flow between pages](docs/diagrams/screen-flow.jpg)
 
 **Data model: what is stored and what is calculated**
 
-```mermaid
-erDiagram
-  USER ||--o| PROGRESS : "has one file"
-  COURSE ||--|{ UNIT : "contains"
-  UNIT ||--|{ LESSON : "5 per unit"
-  UNIT ||--|| QUIZ : "1 per unit"
-  QUIZ ||--|{ QUESTION : "3 to 5"
-  PROGRESS }o--o{ LESSON : "completed ids"
-  PROGRESS }o--o{ QUIZ : "best scores"
-
-  USER {
-    string id PK
-    string name
-    string email
-    string bio
-    string salt
-    string passwordHash
-    string createdAt
-  }
-  PROGRESS {
-    string activeCourseId
-    string completedLessons
-    string quizBestScores
-    string activityXpPerDay
-  }
-```
+![Data model](docs/diagrams/data-model.jpg)
 
 `USER` rows are stored in the JSON user database, and
 `PROGRESS` is stored as one file per user.
@@ -163,10 +113,10 @@ src/
 
 - Create a real backend (Node.js + PostgreSQL) for user accounts, courses and progress. The data layer is isolated in `store/`, `db/` and `lib/`, so the swap is concentrated in one place.
 - Full security and encryption. Today passwords are not encrypted, only hashed and stored (a password cannot be recovered from a hash). However, the account and the progress data (which lessons were watched) are stored unencrypted on the device. Going forward:
-  - Passwords: hash on the server with argon2id (or bcrypt) using a different salt for each user, protected by an extra secret key (pepper). This will replace the current repeated SHA-256.
+  - Passwords: hash on the server with (bcrypt) using a different salt for each user, protected by an extra secret key (pepper). This will replace the current repeated SHA-256.
   - Sign-in: use short-lived access tokens + refresh tokens, limit too many attempts on the server (rate limit), and add email verification and two-factor authentication (2FA).
   - Encrypting content and user data (encryption at rest): store the user account and the progress information of *which courses and lessons were taken* encrypted on the device with AES-256-GCM (with the key in the Keychain / Keystore), and encrypt them in the server database too. All transmission goes over HTTPS (TLS).
-  - Check answers on the server: keep the correct quiz answers and the scoring on the server instead of inside the app. Serve videos through signed, short-lived links.
+  - Check answers on the server: keep the correct quiz answers and the scoring on the server instead of inside the app. 
 - Offline mode: if there is time, I would build an offline mode where users can download a course in advance (storing the videos and quizzes on the device) and study even without internet. When the internet returns, progress is synced with the server. Today, when the internet drops, the app shows an illustrated "No internet connection" page with a "Check again" button.
 - A fully working web version, publishing to the App Store / Google Play, and shuffling the quiz options (shuffle).
 
