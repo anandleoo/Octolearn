@@ -2,7 +2,8 @@ import { useFonts } from 'expo-font';
 import { type ErrorBoundaryProps, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { type ReactNode, useEffect } from 'react';
+import { Platform, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ErrorPage } from '@/components/feedback/ErrorPage';
@@ -19,6 +20,18 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 /** Expo Router shows this page when any screen throws while rendering; "retry" re-renders the route. */
 export function ErrorBoundary({ retry }: ErrorBoundaryProps) {
   return <ErrorPage onRetry={() => void retry()} />;
+}
+
+/** In a desktop browser the app would stretch across the whole window; keep it in a phone-width column instead. */
+function WebFrame({ children }: { children: ReactNode }) {
+  const { colors } = useTheme();
+  return (
+    <View style={{ flex: 1, alignItems: 'center', backgroundColor: colors.surfaceAlt }}>
+      <View style={{ flex: 1, width: '100%', maxWidth: 480, backgroundColor: colors.bg, overflow: 'hidden' }}>
+        {children}
+      </View>
+    </View>
+  );
 }
 
 export default function RootLayout() {
@@ -45,31 +58,35 @@ export default function RootLayout() {
 
   if (!ready) return null;
 
+  const app = (
+    <>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
+        {/* Protected routes: while `guard` is false the router refuses to open them, even from a deep link.
+              `redirectTo` is set on purpose: the (auth) group has no address of its own, so without it a signed-out
+              launch ("/" belongs to the protected tabs) ended on "page not found" in release builds. */}
+        <Stack.Protected guard={signedIn} redirectTo="/sign-in">
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="lesson/[lessonId]" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="quiz/[quizId]" options={{ animation: 'slide_from_bottom', gestureEnabled: false }} />
+          <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="demo-loading" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="demo-error" options={{ animation: 'fade' }} />
+          <Stack.Screen name="demo-offline" options={{ animation: 'fade' }} />
+        </Stack.Protected>
+        <Stack.Protected guard={!signedIn} redirectTo="/">
+          <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
+        </Stack.Protected>
+      </Stack>
+      <ConfirmHost />
+      <ToastHost />
+    </>
+  );
+
   return (
     <CrashGuard>
-      <SafeAreaProvider>
-        <StatusBar style={isDark ? 'light' : 'dark'} />
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
-          {/* Protected routes: while `guard` is false the router refuses to open them, even from a deep link. */}
-          <Stack.Protected guard={signedIn}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="lesson/[lessonId]" options={{ animation: 'slide_from_right' }} />
-            <Stack.Screen
-              name="quiz/[quizId]"
-              options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
-            />
-            <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
-            <Stack.Screen name="edit-profile" options={{ animation: 'slide_from_right' }} />
-            <Stack.Screen name="demo-loading" options={{ animation: 'slide_from_right' }} />
-            <Stack.Screen name="demo-error" options={{ animation: 'fade' }} />
-          </Stack.Protected>
-          <Stack.Protected guard={!signedIn}>
-            <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
-          </Stack.Protected>
-        </Stack>
-        <ConfirmHost />
-        <ToastHost />
-      </SafeAreaProvider>
+      <SafeAreaProvider>{Platform.OS === 'web' ? <WebFrame>{app}</WebFrame> : app}</SafeAreaProvider>
     </CrashGuard>
   );
 }
