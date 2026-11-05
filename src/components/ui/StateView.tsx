@@ -19,6 +19,8 @@ interface StateViewProps {
   onAction?: () => void;
   secondaryLabel?: string;
   onSecondary?: () => void;
+  /** `cancel` for a plain dismiss (Back / Close); `secondary` (violet) for another real choice. */
+  secondaryVariant?: 'secondary' | 'cancel';
   /** Smaller layout for inside a card or the video area. */
   compact?: boolean;
 }
@@ -34,6 +36,7 @@ export function StateView({
   onAction,
   secondaryLabel,
   onSecondary,
+  secondaryVariant = 'secondary',
   compact,
 }: StateViewProps) {
   const { colors } = useTheme();
@@ -71,7 +74,7 @@ export function StateView({
         />
       )}
       {secondaryLabel && onSecondary && (
-        <Button label={secondaryLabel} onPress={onSecondary} variant="secondary" style={styles.secondary} />
+        <Button label={secondaryLabel} onPress={onSecondary} variant={secondaryVariant} style={styles.secondary} />
       )}
     </Animated.View>
   );

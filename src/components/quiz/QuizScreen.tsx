@@ -128,6 +128,7 @@ export function QuizScreen({ step }: { step: Step }) {
             onPrimary={restart}
             secondaryLabel="Хаах"
             onSecondary={exit}
+            secondaryVariant="cancel"
           />
         )}
       </Screen>

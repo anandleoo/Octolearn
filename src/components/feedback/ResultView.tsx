@@ -30,6 +30,8 @@ interface ResultViewProps {
   onPrimary: () => void;
   secondaryLabel?: string;
   onSecondary?: () => void;
+  /** `cancel` for a plain dismiss (Close); `secondary` (violet) for another real choice such as Retry. */
+  secondaryVariant?: 'secondary' | 'cancel';
 }
 
 /**
@@ -48,6 +50,7 @@ export function ResultView({
   onPrimary,
   secondaryLabel,
   onSecondary,
+  secondaryVariant = 'secondary',
 }: ResultViewProps) {
   const { colors } = useTheme();
   const badge = useSharedValue(0);
@@ -100,7 +103,7 @@ export function ResultView({
       </View>
       <Animated.View entering={FadeInDown.duration(280).delay(550)} style={styles.actions}>
         {secondaryLabel && onSecondary && (
-          <Button label={secondaryLabel} onPress={onSecondary} variant="secondary" />
+          <Button label={secondaryLabel} onPress={onSecondary} variant={secondaryVariant} />
         )}
         <Button label={primaryLabel} onPress={onPrimary} />
       </Animated.View>

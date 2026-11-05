@@ -15,7 +15,8 @@ import { PressableScale } from './PressableScale';
 interface ButtonProps {
   label: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary' | 'danger';
+  /** cancel = neutral: dark text and a dark outline (for Cancel / Close / Back), instead of the violet of `secondary`. */
+  variant?: 'primary' | 'secondary' | 'danger' | 'cancel';
   disabled?: boolean;
   /** Shows a spinner and ignores taps (while a request is running). */
   loading?: boolean;
@@ -43,15 +44,17 @@ export function Button({
     enabled.value = withTiming(disabled ? 0 : 1, { duration: motion.base });
   }, [disabled, enabled]);
 
+  // The outlined variants (secondary, cancel) sit on the page background; the filled ones carry their own colour.
+  const outlined = variant === 'secondary' || variant === 'cancel';
   const solid = variant === 'primary' ? colors.accent : variant === 'danger' ? colors.danger : colors.surface;
-  const solidText = variant === 'secondary' ? colors.accent : colors.onAccent;
-  const border = variant === 'secondary' ? colors.accent : 'transparent';
-  const disabledBg = variant === 'secondary' ? colors.surface : colors.locked;
+  const solidText = variant === 'secondary' ? colors.accent : variant === 'cancel' ? colors.text : colors.onAccent;
+  const border = variant === 'secondary' ? colors.accent : variant === 'cancel' ? colors.text : 'transparent';
+  const disabledBg = outlined ? colors.surface : colors.locked;
   const disabledText = colors.lockedIcon;
 
   const containerStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(enabled.value, [0, 1], [disabledBg, solid]),
-    borderColor: interpolateColor(enabled.value, [0, 1], [variant === 'secondary' ? colors.border : 'transparent', border]),
+    borderColor: interpolateColor(enabled.value, [0, 1], [outlined ? colors.border : 'transparent', border]),
   }));
   const textStyle = useAnimatedStyle(() => ({
     color: interpolateColor(enabled.value, [0, 1], [disabledText, solidText]),

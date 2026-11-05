@@ -62,7 +62,7 @@ export function DeleteAccountSheet({ visible, onClose }: { visible: boolean; onC
         maxLength={64}
       />
       <Button label="Бүртгэлээ устгах" variant="danger" onPress={confirm} loading={busy} />
-      <Button label="Цуцлах" variant="secondary" onPress={close} />
+      <Button label="Цуцлах" variant="cancel" onPress={close} />
     </Sheet>
   );
 }

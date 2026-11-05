@@ -47,7 +47,7 @@ export function ConfirmHost() {
             <View style={styles.buttons}>
               <Button
                 label={options.cancelLabel ?? 'Цуцлах'}
-                variant="secondary"
+                variant="cancel"
                 onPress={() => answerConfirm(false)}
                 style={styles.button}
               />
