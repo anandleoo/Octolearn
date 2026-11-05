@@ -1,8 +1,8 @@
-import * as SecureStore from 'expo-secure-store';
 import { create } from 'zustand';
 
 import { mutateUsers, readUsers } from '@/db/userDb';
 import { hashPassword, newId, newSalt } from '@/lib/passwordHash';
+import { secureStorage } from '@/lib/secureStorage';
 import { sanitizeBio, sanitizeName } from '@/lib/security';
 import { safeEqual, type UserRecord } from '@/lib/users';
 import { normalizeEmail, validateEmail, validateName, validatePassword } from '@/lib/validation';
@@ -30,16 +30,16 @@ const toAccount = ({ id, name, email, bio, createdAt }: UserRecord): Account => 
 
 /** The signed-in user's id lives in the OS secure store (Keychain / Keystore), not in plain storage. */
 const session = {
-  save: (id: string) => SecureStore.setItemAsync(SESSION_KEY, id).catch(() => {}),
-  read: () => SecureStore.getItemAsync(SESSION_KEY).catch(() => null),
-  clear: () => SecureStore.deleteItemAsync(SESSION_KEY).catch(() => {}),
+  save: (id: string) => secureStorage.set(SESSION_KEY, id),
+  read: () => secureStorage.get(SESSION_KEY),
+  clear: () => secureStorage.remove(SESSION_KEY),
 };
 
 /** The email "Remember me" pre-fills on the sign-in form. Survives signing out; cleared if Remember me is off. */
 const remembered = {
-  save: (email: string) => SecureStore.setItemAsync(REMEMBERED_EMAIL_KEY, email).catch(() => {}),
-  read: () => SecureStore.getItemAsync(REMEMBERED_EMAIL_KEY).catch(() => null),
-  clear: () => SecureStore.deleteItemAsync(REMEMBERED_EMAIL_KEY).catch(() => {}),
+  save: (email: string) => secureStorage.set(REMEMBERED_EMAIL_KEY, email),
+  read: () => secureStorage.get(REMEMBERED_EMAIL_KEY),
+  clear: () => secureStorage.remove(REMEMBERED_EMAIL_KEY),
 };
 
 /** Slow down password guessing: 5 wrong tries on one email locks it for a while, longer each time. */

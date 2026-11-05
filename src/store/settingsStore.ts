@@ -15,7 +15,15 @@ interface SettingsState {
 
 /** Tells the OS-level colour scheme to follow the choice, so every `useColorScheme()` in the app updates at once. */
 function applyAppearance(mode: AppearanceMode) {
-  Appearance.setColorScheme(mode === 'system' ? 'unspecified' : mode);
+  // Browsers have no such override (react-native-web lacks it, so the web app follows the browser's own theme).
+  // A throw here would stop the store from ever reporting "loaded", and the app would never leave the splash screen.
+  try {
+    if (typeof Appearance.setColorScheme === 'function') {
+      Appearance.setColorScheme(mode === 'system' ? 'unspecified' : mode);
+    }
+  } catch {
+    // ignore: the theme just stays on the system setting
+  }
 }
 
 /** Device preferences (not tied to an account): theme and vibration feedback. */
