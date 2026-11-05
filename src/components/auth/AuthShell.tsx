@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 're
 import { radius, useTheme } from '@/theme';
 
 import { AppText } from '../ui/AppText';
-import { Icon } from '../ui/Icon';
+import { OctoMark } from '../ui/OctoMark';
 import { Reveal } from '../ui/Reveal';
 import { Screen } from '../ui/Screen';
 
@@ -29,8 +29,13 @@ export function AuthShell({ title, subtitle, screen, children, footer }: AuthShe
           showsVerticalScrollIndicator={false}
         >
           <Reveal once={screen} style={styles.header}>
-            <View style={[styles.logo, { backgroundColor: colors.accent }]}>
-              <Icon name="brand" size={28} color={colors.onAccent} />
+            <View style={styles.brand} accessibilityLabel="OctoLearn">
+              <View style={[styles.logo, { backgroundColor: colors.accent }]}>
+                <OctoMark size={34} color={colors.onAccent} />
+              </View>
+              <AppText variant="title" style={{ color: colors.text }}>
+                OctoLearn
+              </AppText>
             </View>
             <AppText variant="display" accessibilityRole="header">
               {title}
@@ -55,7 +60,8 @@ const styles = StyleSheet.create({
   fill: { flex: 1 },
   content: { flexGrow: 1, paddingHorizontal: 24, paddingTop: 32, paddingBottom: 24, gap: 28 },
   header: { gap: 8 },
-  logo: { width: 56, height: 56, borderRadius: radius.md, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
+  brand: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 },
+  logo: { width: 56, height: 56, borderRadius: radius.md, alignItems: 'center', justifyContent: 'center' },
   form: { gap: 16 },
   footer: { alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 6, flexWrap: 'wrap' },
 });
