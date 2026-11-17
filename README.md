@@ -2,7 +2,9 @@
 
 [Монгол хувилбар](README.mn.md)
 
-An app for online video courses, developed as a mobile app inspired by the Duolingo mobile app. The project is based on the OctoLearn company's Fullstack developer selection task and is built with **React Native (Expo) + TypeScript**.
+**Note:** This is a prototype built for demonstration and portfolio purposes only. It is not an official OctoLearn product, is not affiliated with or endorsed by OctoLearn LLC, and is not intended to replace or compete with any existing service. All course content is sample data.
+
+An app for online video courses, developed as a mobile app inspired by the Duolingo mobile app. The project is based on the OctoLearn company's Fullstack developer selection task and is built with **React Native (Expo) + TypeScript**. 
 
 The flow of using this app is:
 
